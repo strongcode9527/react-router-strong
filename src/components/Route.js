@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
-import {browserHistory} from '../history' 
-
-export default class Router extends Component {
+export default class Route extends Component {
   constructor(props) {
     super(props)
   }
@@ -13,14 +11,11 @@ export default class Router extends Component {
     }
   }
   render() {
-    const {children} = this.props
-    
-    return <div>
-
-    </div>
+    const {component: Component} = this.props
+    return <Component />
   }
 } 
 
-Router.childContextTypes = {
+Route.childContextTypes = {
   History: PropTypes.object
 }
