@@ -1,8 +1,10 @@
 import Manager from './manager'
 
+// manager只是为了储存和触发回调函数
+
 const manager = Manager()
 
-export default function browserHistory() {
+function browserHistory() {
 
   const History = window.history 
 
@@ -37,3 +39,5 @@ export default function browserHistory() {
     goForward,
   }
 }
+
+export default browserHistory()

@@ -2,7 +2,7 @@ const manager = () => {
   const listeners = []
   
   function addListener(fn) {
-    if(listeners.find(item => item === fn), typeof fn !== 'function') {
+    if(listeners.find(item => item === fn) && typeof fn !== 'function') {
       return
     }
     listeners.push(fn)

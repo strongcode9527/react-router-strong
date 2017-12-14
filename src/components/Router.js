@@ -6,10 +6,13 @@ import {browserHistory} from '../history'
 export default class Router extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      location: window.location
+    }
   }
   getChildContext() {
     return {
-      History: browserHistory()
+      History: browserHistory
     }
   }
   render() {
