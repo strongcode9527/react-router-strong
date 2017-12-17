@@ -12,9 +12,10 @@ const manager = () => {
     }
   }
 
-  function notifyListeners(location, action) {
+  function notifyListeners(path, action) {
+    console.log('noty', listeners)
     try{
-      listeners.forEach(listener => listener(location, action))
+      listeners.forEach(listener => listener(path, action))
     }
     catch(e) {
       console.warn(e)

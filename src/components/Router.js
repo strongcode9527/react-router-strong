@@ -19,7 +19,9 @@ export default class Router extends Component {
     const {children} = this.props
     
     return <div>
-
+      {
+        children
+      }
     </div>
   }
 } 

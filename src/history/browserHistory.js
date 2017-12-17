@@ -13,8 +13,9 @@ function browserHistory() {
   }
   function push(url, state={}, title='') {
     const type = "PUSH"
+    console.log(url)
     History.pushState(state, title, url)
-    manager.notifyListeners(window.location, type)
+    manager.notifyListeners(url, type)
   }
   function goBack() {
     go(-1)

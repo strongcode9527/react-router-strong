@@ -6,18 +6,27 @@ import {browserHistory} from '../history'
 export default class Route extends Component {
   constructor(props) {
     super(props)
-  }
-  getChildContext() {
-    return {
-      History: browserHistory()
+    this.state = {
+      path: window.location.pathname
     }
   }
-  render() {
-    const {component: Component} = this.props
-    return <Component />
+  componentWillMount() {
+    console.log('hidr',this.context.History) 
+    this.context.History.listen(this.handleChangePath)
+  }
+  handleChangePath = (path) => {
+    console.log('change' ,path)
+    this.setState({
+      path,
+    })
+  }
+  render() { 
+    const {component: Component, path} = this.props
+    console.log('component',this.props.component) 
+    return this.state.path === path ? <Component /> : null
   }
 } 
 
-Route.childContextTypes = {
+Route.contextTypes = {
   History: PropTypes.object
 }

@@ -1,17 +1,20 @@
 import React,{Component} from 'react'
-import {browserHistory} from './history'
+import {browserHistory} from '../history'
 
 
 export default class Link extends Component {
   handleClick = (e) => {
-    const {path} = this.props
+    const {to} = this.props
     e.preventDefault()
-    browserHistory.push(path)
+    browserHistory.push(to)
   }
   render() {
-    const {path} = this.props
+    const {to, children} = this.props
+    console.log(children)
     return (
-      <a href= {path} onClick={this.handleClick} />
+      <a href= {to} onClick={this.handleClick}>
+        {children}
+      </a>
     )
   }
 }
