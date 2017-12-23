@@ -21,6 +21,23 @@ history.pushState(null, null, link.href);
 
 ```
 
+### 支持浏览器前进或后退
+
+onpopstate事件支持检测浏览器的前进和后退按钮，但是history.pushState或history.replaceState并不会触发onpopstate事件。需要做特殊处理。
+
+
+### 后台支持
+
+为了支持刷新浏览器还停留在之前的页面要通过后台配合。比如在package文件的webpack-dev-server中要添加以下命令行：
+
+```
+"start": "webpack-dev-server --history-api-fallback",
+
+```
+
+我对于 --history-api-fallback的理解就是为了支持单页面应用。当pathname改变的时候，后端不改变获得资源文件的路径。避免单页面应用出现404现象。
+
+
 ### 自己仿写一个react-router
 
 原理以及基本的知识在上面应讲好了。
