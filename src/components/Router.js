@@ -7,14 +7,29 @@ export default class Router extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      location: window.location
+      path: window.location.pathname
     }
   }
   getChildContext() {
     return {
-      History: browserHistory
+      path: this.state.path
     }
   }
+  componentWillMount() {
+    browserHistory.listen(this.handlePopState)
+  }
+  componentDidMount() {
+    window.addEventListener('popstate', this.handlePopState)
+  }
+  componentWillUnmount() {
+    window.removeEventListener('popstate', this.handlePopState)
+  }
+  handlePopState = () => {
+    this.setState({
+      path: window.location.pathname
+    })
+  }
+
   render() {
     const {children} = this.props
     
@@ -27,5 +42,5 @@ export default class Router extends Component {
 } 
 
 Router.childContextTypes = {
-  History: PropTypes.object
+  path: PropTypes.string
 }

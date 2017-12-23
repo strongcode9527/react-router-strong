@@ -13,7 +13,6 @@ function browserHistory() {
   }
   function push(url, state={}, title='') {
     const type = "PUSH"
-    console.log(url)
     History.pushState(state, title, url)
     manager.notifyListeners(url, type)
   }

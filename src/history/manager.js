@@ -13,7 +13,6 @@ const manager = () => {
   }
 
   function notifyListeners(path, action) {
-    console.log('noty', listeners)
     try{
       listeners.forEach(listener => listener(path, action))
     }
